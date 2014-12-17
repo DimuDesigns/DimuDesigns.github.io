@@ -5,51 +5,190 @@
         <title>Demo</title>
     </head>
     <body >
-        <div id="container" style="width:959px; margin-left:auto; margin-right:auto;"></div>
+        <div id="map-container" style="width:959px; margin-left:auto; margin-right:auto; height:593px;">
+            <div id="map"></div>
+            <div class="tooltip hovertip">
+                <h4 class="tooltip-title"></h4>
+                <div class="tooltip-triangle"></div>
+            </div>
+        </div>
         <script type="text/javascript">
+        var states = {
+                "AL": "Alabama",
+                "AK": "Alaska",
+                "AS": "American Samoa",
+                "AZ": "Arizona",
+                "AR": "Arkansas",
+                "CA": "California",
+                "CO": "Colorado",
+                "CT": "Connecticut",
+                "DE": "Delaware",
+                "DC": "District Of Columbia",
+                "FM": "Federated States Of Micronesia",
+                "FL": "Florida",
+                "GA": "Georgia",
+                "GU": "Guam",
+                "HI": "Hawaii",
+                "ID": "Idaho",
+                "IL": "Illinois",
+                "IN": "Indiana",
+                "IA": "Iowa",
+                "KS": "Kansas",
+                "KY": "Kentucky",
+                "LA": "Louisiana",
+                "ME": "Maine",
+                "MH": "Marshall Islands",
+                "MD": "Maryland",
+                "MA": "Massachusetts",
+                "MI": "Michigan",
+                "MN": "Minnesota",
+                "MS": "Mississippi",
+                "MO": "Missouri",
+                "MT": "Montana",
+                "NE": "Nebraska",
+                "NV": "Nevada",
+                "NH": "New Hampshire",
+                "NJ": "New Jersey",
+                "NM": "New Mexico",
+                "NY": "New York",
+                "NC": "North Carolina",
+                "ND": "North Dakota",
+                "MP": "Northern Mariana Islands",
+                "OH": "Ohio",
+                "OK": "Oklahoma",
+                "OR": "Oregon",
+                "PW": "Palau",
+                "PA": "Pennsylvania",
+                "PR": "Puerto Rico",
+                "RI": "Rhode Island",
+                "SC": "South Carolina",
+                "SD": "South Dakota",
+                "TN": "Tennessee",
+                "TX": "Texas",
+                "UT": "Utah",
+                "VT": "Vermont",
+                "VI": "Virgin Islands",
+                "VA": "Virginia",
+                "WA": "Washington",
+                "WV": "West Virginia",
+                "WI": "Wisconsin",
+                "WY": "Wyoming"
+            };
+        var minScale = 1;
+        var maxScale = 4;        
         var centered;
         var width;
         var height;
         var g;
-        d3.xml("us-states.svg", "image/svg+xml", function(xml) {
-            var map = document.importNode(xml.documentElement, true);
-            var centered;
-            
-            d3.select("#container").node().appendChild(map);            
-            g = d3.select("g#states");            
-            width = d3.select("svg").attr("width");
-            height = d3.select("svg").attr("height");
-            
-            d3.selectAll("path.state").on("click", clicked);
-        });
+        var active;
         
+        var zoom = d3.behavior.zoom()
+            .translate([0, 0])
+            .scale(1)
+            .scaleExtent([1, 4])
+            .on("zoom", zoomed);
+        
+        d3.xml("us-states.svg", "image/svg+xml", function(xml) {
+            var node = document.importNode(xml.documentElement, true);
+            
+            d3.select("#map-container #map").node().appendChild(node);
+            g = d3.select("#map-container #map g#states");            
+            width = d3.select("#map-container #map svg").attr("width");
+            height = d3.select("#map-container #map svg").attr("height");
+            active = d3.select(null);
+            
+            d3.selectAll("#map .state").on("click", clicked);
+            enableMouseOver();
+            //d3.select("g#states rect").on("click", reset);
+        });        
+        
+        function enableMouseOver() {
+            d3.selectAll("#map .state").on("mouseover", showTooltip).on("mouseout", hideTooltip);
+        }
+        
+        function disableMouseOver() {
+            d3.selectAll("#map .state").on("mouseover", null). on("mouseout", null);
+        }
         
         function clicked() {
+          disableMouseOver();
+          hideTooltip();
+          
           var x, y, k;
           var target = this;
           
-          if (target && centered !== target) {
-            var bounds = target.getBBox();
-            console.log(bounds);
-            x = bounds.x + bounds.width/2;
-            y = bounds.y + bounds.height/2;
-            k = 4;
+          if (target && centered !== target) {          
+            var centroid = getCentroid(target);
+            
+            x = centroid.x;
+            y = centroid.y;
+            k = maxScale;
             centered = target;
           } else {
             x = width / 2;
             y = height / 2;
-            k = 1;
+            k = minScale;
             centered = null;
           }
 
-          g.selectAll("path")
+          g.selectAll("#map path")
               .classed("active", centered && function(target) { return target === centered; });
 
           g.transition()
               .duration(750)
               .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-              .style("stroke-width", 1.5 / k + "px");
-        }        
+              .style("stroke-width", 1.5 / k + "px")
+              .each('end', enableMouseOver);
+         
+        }
+        
+        function showTooltip() {
+            var state = states[d3.select(this).attr("id")];            
+            d3.select("#map-container .tooltip-title").text(state);                        
+            d3.select("#map-container .tooltip")
+                .style({display:"block"});
+            d3.select("body").on("mousemove", moveTooltip);
+            
+        }
+        
+        function hideTooltip() {
+            d3.select("#map-container .tooltip")
+                .style({
+                    display:"none"
+                });
+            d3.select("body").on("mousemove", null);
+        }
+        
+        function moveTooltip() {
+            var m = d3.mouse(this);
+            var t_width = parseInt(d3.select("#map-container .tooltip").style("width"));
+            var t_height = parseInt(d3.select("#map-container .tooltip").style("height"));
+            
+            d3.select("#map-container .tooltip").style({
+                left:"" + (m[0] - ((t_width+10)/2))+ "px",
+                top:"" + (m[1] + 35)  + "px"
+            });
+        }
+        
+        function reset() {
+            active.classed("active", false);
+            active = d3.select(null);
+            
+            svg.transition()
+                .duration(750)
+                .call(zoom.translate([0,0]).scale(1).event);
+        }
+        
+        function getCentroid(target) {
+            var bounds = target.getBBox();
+            
+            return {
+                x:bounds.x + bounds.width/2,
+                y:bounds.y + bounds.height/2
+            };
+        }
+        
+        function zoomed() {}        
         </script>
         <link rel="stylesheet" href="styles.css" type="text/css" media="all">
     </body>
