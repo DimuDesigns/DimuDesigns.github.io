@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+        <title>Demo</title>
+    </head>
+    <body >
+        <div id="container" style="width:959px; margin-left:auto; margin-right:auto;"></div>
+        <script type="text/javascript">
+        var centered;
+        var width;
+        var height;
+        var g;
+        d3.xml("us-states.svg", "image/svg+xml", function(xml) {
+            var map = document.importNode(xml.documentElement, true);
+            var centered;
+            
+            d3.select("#container").node().appendChild(map);            
+            g = d3.select("g#states");            
+            width = d3.select("svg").attr("width");
+            height = d3.select("svg").attr("height");
+            
+            d3.selectAll("path.state").on("click", clicked);
+        });
+        
+        
+        function clicked() {
+          var x, y, k;
+          var target = this;
+          
+          if (target && centered !== target) {
+            var bounds = target.getBBox();
+            console.log(bounds);
+            x = bounds.x + bounds.width/2;
+            y = bounds.y + bounds.height/2;
+            k = 4;
+            centered = target;
+          } else {
+            x = width / 2;
+            y = height / 2;
+            k = 1;
+            centered = null;
+          }
+
+          g.selectAll("path")
+              .classed("active", centered && function(target) { return target === centered; });
+
+          g.transition()
+              .duration(750)
+              .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+              .style("stroke-width", 1.5 / k + "px");
+        }        
+        </script>
+        <link rel="stylesheet" href="styles.css" type="text/css" media="all">
+    </body>
+</html>

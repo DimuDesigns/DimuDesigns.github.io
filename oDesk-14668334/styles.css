@@ -1,0 +1,98 @@
+.state {
+	fill:#d3d3d3;
+	stroke:#fff;
+	stroke-width:0.75;
+	stroke-opacity:1;
+}
+
+.state:hover {
+	fill: #A7DA1A;
+}
+
+a .state {
+	fill: #aaa;
+}
+
+/* Tooltip */
+.tooltip {
+	background-color: #fff;
+	box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+	display: none;
+	max-width: 280px;
+	min-width: 120px;
+	margin-top: -76px;
+	padding: 10px 14px;
+	position: absolute;
+}
+
+.tooltip-title {
+	color: #444;
+	font-size: 16px !important;
+	font-weight: normal;
+	margin: 0 0 16px 0;
+}
+
+.hovertip {
+	min-width: 50px;
+	pointer-events: none;
+}
+
+.hovertip .tooltip-title {
+	margin: 0;
+}
+
+.tooltip-content {
+	max-height: 160px;
+	overflow-y: auto;
+}
+
+.tooltip-description,
+.tooltip p {
+	color: #bbb;
+	font-size: 13px;
+	margin: 0;
+}
+
+.tooltip-link {
+	background-color: #ccc;
+	color: #fff !important;
+	font-size: 14px;
+	line-height: 26px;
+	padding: 0 8px;
+	margin-top: 10px;
+	display: inline-block;
+	float: right;
+}
+
+.tooltip-link:hover {
+	background-color: #aaa;
+}
+
+.tooltip img {
+	max-width: 100%;
+}
+
+.tooltip-triangle {
+	background-image: url(../images/tooltip-triangle.png);
+	width: 14px;
+	height: 6px;
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	margin-bottom: -6px;
+	margin-left: -7px;
+}
+
+.tooltip-close {
+	background-color: #eee;
+	background-image: url(../images/cross.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	float: right;
+	margin: 0 -4px 0 0;
+	width: 10px;
+	height: 10px;
+}
