@@ -74,33 +74,44 @@
                 "WI": "Wisconsin",
                 "WY": "Wyoming"
             };
-        var minScale = 1;
-        var maxScale = 4;        
-        var centered;
-        var width;
-        var height;
+        var minScale = 1, maxScale = 4;        
+        var width, height;
+        var active = d3.select(null);
         var g;
-        var active;
-        
+        var svg;
         var zoom = d3.behavior.zoom()
             .translate([0, 0])
             .scale(1)
-            .scaleExtent([1, 4])
+            .scaleExtent([minScale, maxScale])
             .on("zoom", zoomed);
         
+         
         d3.xml("us-states.svg", "image/svg+xml", function(xml) {
             var node = document.importNode(xml.documentElement, true);
             
             d3.select("#map-container #map").node().appendChild(node);
+            
+            initProperties();
+            initHandlers();
+        });        
+        
+        function initProperties() {
             g = d3.select("#map-container #map g#states");            
             width = d3.select("#map-container #map svg").attr("width");
-            height = d3.select("#map-container #map svg").attr("height");
+            height = d3.select("#map-container #map svg").attr("height");            
+            svg = d3.select("#map-container #map svg");
             active = d3.select(null);
+        }
+        
+        function initHandlers() {
+            svg.on("click", stopped, true);
+            svg.call(zoom).call(zoom.event);
             
             d3.selectAll("#map .state").on("click", clicked);
+            d3.select("#map g#states rect").on("click", reset);
+            
             enableMouseOver();
-            //d3.select("g#states rect").on("click", reset);
-        });        
+        }
         
         function enableMouseOver() {
             d3.selectAll("#map .state").on("mouseover", showTooltip).on("mouseout", hideTooltip);
@@ -114,32 +125,17 @@
           disableMouseOver();
           hideTooltip();
           
-          var x, y, k;
-          var target = this;
+          if (active.node() === this) return reset();
+          active.classed("active", false);
+          active = d3.select(this).classed("active", true);
           
-          if (target && centered !== target) {          
-            var centroid = getCentroid(target);
-            
-            x = centroid.x;
-            y = centroid.y;
-            k = maxScale;
-            centered = target;
-          } else {
-            x = width / 2;
-            y = height / 2;
-            k = minScale;
-            centered = null;
-          }
-
-          g.selectAll("#map path")
-              .classed("active", centered && function(target) { return target === centered; });
-
-          g.transition()
-              .duration(750)
-              .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-              .style("stroke-width", 1.5 / k + "px")
-              .each('end', enableMouseOver);
-         
+          var bounds = this.getBBox(),
+              x = bounds.x + bounds.width/2,
+              y = bounds.y + bounds.height/2,
+              scale = .9 / Math.max(bounds.width/width, bounds.height/height),
+              translate = [width/ 2 - scale * x, height /2 - scale * y];
+          
+          svg.transition().duration(750).call(zoom.translate(translate).scale(scale).event);
         }
         
         function showTooltip() {
@@ -147,8 +143,7 @@
             d3.select("#map-container .tooltip-title").text(state);                        
             d3.select("#map-container .tooltip")
                 .style({display:"block"});
-            d3.select("body").on("mousemove", moveTooltip);
-            
+            d3.select("body").on("mousemove", moveTooltip);            
         }
         
         function hideTooltip() {
@@ -179,16 +174,19 @@
                 .call(zoom.translate([0,0]).scale(1).event);
         }
         
-        function getCentroid(target) {
-            var bounds = target.getBBox();
-            
-            return {
-                x:bounds.x + bounds.width/2,
-                y:bounds.y + bounds.height/2
-            };
+        function zoomed() {
+            g.style("stroke-width", 1.5/d3.event.scale + "px");
+            g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+            enableMouseOver();
         }
         
-        function zoomed() {}        
+        function stopped() {
+            if (d3.event.defaultPrevented) {
+                d3.event.stopPropagation();
+                enableMouseOver();
+            }
+        }
+        
         </script>
         <link rel="stylesheet" href="styles.css" type="text/css" media="all">
     </body>
