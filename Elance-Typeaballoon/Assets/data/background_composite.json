@@ -1,0 +1,6 @@
+[
+    {"name":"day", "path":"Assets/images/day.png", "x":0, "y":0},
+    {"name":"night", "path":"Assets/images/night.png", "x":0, "y":-400},
+    {"name":"foreground", "path":"Assets/images/foreground.png", "x":0, "y":0},
+    {"name":"clouds", "path":"Assets/images/blank.png", "x":0, "y":0}
+]

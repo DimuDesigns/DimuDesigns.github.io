@@ -1,0 +1,359 @@
+[
+    {
+        "name":"title",
+        "composite":[
+            {"name":"title", "path":"Assets/images/title.png", "x":63, "y":201},
+            {"name":"balloonLeft", "path":"Assets/images/balloons.png", "x":0, "y":0},
+            {"name":"balloonRight", "path":"Assets/images/balloons.png", "x":263, "y":0},
+            {"name":"start_btn", "path":"Assets/images/buttonBase.png", "x":135, "y":261},
+            {"name":"startText", "path":"Assets/images/start.png", "x":175, "y":270},
+            {"name":"howto_btn", "path":"Assets/images/buttonBase.png", "x":135, "y":304},
+            {"name":"howtoText", "path":"Assets/images/howto.png", "x":171, "y":312}
+        ],
+        "x":179,
+        "y":400,
+        "width": 434,
+        "height": 348,
+        "buttonGroups":[
+            {
+                "groupID":"",
+                "select":"",
+                "isMenu":false,
+                "buttons":[
+                    {"name":"start_btn", "up":"", "over":"", "selected":""}
+                ]
+            },
+            {
+                "groupID":"",
+                "select":"",
+                "isMenu":false,
+                "buttons":[
+                    {"name":"howto_btn", "up":"", "over":"", "selected":""}
+                ]
+            }
+        ],
+        "inTweens":[
+            {
+                "delay":0,
+                "duration":2,
+                "from":{"y":400},
+                "to":{"y":-60},
+                "ease":{"type":"motion.easing.Cubic", "func":"easeOut"}
+            }
+        ],
+        "outTweens":[
+            {
+                "delay":0,
+                "duration":1,
+                "from":{"y":-60},
+                "to":{"y":-430},
+                "ease":{"type":"motion.easing.Cubic", "func":"easeIn"}
+            }
+        ]
+    },
+    {
+        "name":"howto",
+        "composite":[
+            {"name":"modal", "path":"Assets/images/modal.png" , "x":0, "y":9},
+            {"name":"howtoTextHeader", "path":"Assets/images/howToHeader.png", "x":16, "y":22},
+            {"name":"balloonLowerRight", "path":"Assets/images/balloons.png", "x":389, "y":261},
+            {"name":"howto_close_btn", "path":"Assets/images/close.png", "x":469, "y":0}
+        ],
+        "x":159,
+        "y":6,
+        "width": 560,
+        "height": 477,
+        "buttonGroups":[
+            {
+                "groupID":"",
+                "select":"",
+                "isMenu":false,
+                "buttons":[
+                    {"name":"howto_close_btn", "up":"", "over":"", "selected":""}
+                ]
+            }
+        ],
+        "inTweens":[],
+        "outTweens":[]
+    },
+    {
+        "name":"options",
+        "composite":[
+            {"name":"balloonLeft", "path":"Assets/images/balloons.png", "x":58, "y":0},
+            {"name":"balloonRight", "path":"Assets/images/balloons.png", "x":296, "y":11},
+            {"name":"options", "path":"Assets/images/gameOptions.png", "x":0, "y":204},
+            {"name":"play_btn", "path":"Assets/images/playNow.png", "x":416, "y":334},
+            {"name":"easy_btn", "path":"Assets/images/button88x24.png", "x":40, "y":306},
+            {"name":"medium_btn", "path":"Assets/images/button88x24.png", "x":40, "y":334},
+            {"name":"hard_btn", "path":"Assets/images/button88x24.png", "x":40, "y":362},
+            {"name":"all_btn", "path":"Assets/images/button118x24.png", "x":221, "y":306},
+            {"name":"home_row_btn", "path":"Assets/images/button118x24.png", "x":221, "y":334},
+            {"name":"top_row_btn", "path":"Assets/images/button118x24.png", "x":221, "y":362},
+            {"name":"bottom_row_btn", "path":"Assets/images/button118x24.png", "x":221, "y":389},
+            {"name":"numbers_btn", "path":"Assets/images/button118x24.png", "x":221, "y":417}
+        ],
+        "x":127,
+        "y":400,
+        "width": 545,
+        "height": 478,
+        "buttonGroups": [
+            {
+                "groupID":"difficulty",
+                "isMenu":true,
+                "select":"easy_btn",
+                "buttons":[
+                    {
+                        "name":"easy_btn",
+                        "up":"Assets/images/easy_up_btn.png",
+                        "over":"Assets/images/easy_over_btn.png",
+                        "selected":"Assets/images/easy_selected_btn.png"
+                    },
+                    {
+                        "name":"medium_btn",
+                        "up":"Assets/images/medium_up_btn.png",
+                        "over":"Assets/images/medium_over_btn.png",
+                        "selected":"Assets/images/medium_selected_btn.png"
+                    },
+                    {
+                        "name":"hard_btn",
+                        "up":"Assets/images/hard_up_btn.png",
+                        "over":"Assets/images/hard_over_btn.png",
+                        "selected":"Assets/images/hard_selected_btn.png"
+                    }
+                ]
+            },
+            {
+                "groupID":"lessonType",
+                "isMenu":true,
+                "select":"all_btn",
+                "buttons":[
+                    {
+                        "name":"all_btn",
+                        "up":"Assets/images/all_up_btn.png",
+                        "over":"Assets/images/all_over_btn.png",
+                        "selected":"Assets/images/all_selected_btn.png"
+                    },
+                    {
+                        "name":"home_row_btn",
+                        "up":"Assets/images/home_up_btn.png",
+                        "over":"Assets/images/home_over_btn.png",
+                        "selected":"Assets/images/home_selected_btn.png"
+                    },
+                    {
+                        "name":"top_row_btn",
+                        "up":"Assets/images/top_up_btn.png",
+                        "over":"Assets/images/top_over_btn.png",
+                        "selected":"Assets/images/top_selected_btn.png"
+                    },
+                    {
+                        "name":"bottom_row_btn",
+                        "up":"Assets/images/bottom_up_btn.png",
+                        "over":"Assets/images/bottom_over_btn.png",
+                        "selected":"Assets/images/bottom_selected_btn.png"
+                    },
+                    {
+                        "name":"numbers_btn",
+                        "up":"Assets/images/numbers_up_btn.png",
+                        "over":"Assets/images/numbers_over_btn.png",
+                        "selected":"Assets/images/numbers_selected_btn.png"
+                    }
+                ]
+            },
+            {
+                "groupID":"",
+                "select":"",
+                "isMenu":false,
+                "buttons":[
+                    {"name":"play_btn", "up":"", "over":"", "selected":""}
+                ]
+            }
+        ],
+        "inTweens":[
+            {
+                "delay":0,
+                "duration":1,
+                "from":{"y":400},
+                "to":{"y":-144},
+                "ease":{"type":"motion.easing.Cubic", "func":"easeOut"}
+            }
+        ],
+        "outTweens":[
+            {
+                "delay":0,
+                "duration":1,
+                "from":{"y":-144},
+                "to":{"y":-478},
+                "ease":{"type":"motion.easing.Cubic", "func":"easeIn"}
+            }
+        ]
+    },
+    {
+        "name":"gameOver",
+        "composite":[
+            {"name":"gameOverModal", "path":"Assets/images/gameOver.png", "x":0, "y":0},
+            {"name":"playagain_btn", "path":"Assets/images/playAgain.png", "x":62, "y":163},
+            {"name":"mainmenu_btn", "path":"Assets/images/mainMenu.png", "x":176, "y":163}
+        ],
+        "x":240,
+        "y":400,
+        "width": 320,
+        "height": 255,
+        "buttonGroups": [
+            {
+                "groupID":"",
+                "select":"",
+                "isMenu":false,
+                "buttons":[
+                    {"name":"playagain_btn", "up":"", "over":"", "selected":""}
+                ]
+            },
+            {
+                "groupID":"",
+                "select":"",
+                "isMenu":false,
+                "buttons":[
+                    {"name":"mainmenu_btn", "up":"", "over":"", "selected":""}
+                ]
+            }
+        ],
+        "inTweens":[
+            {
+                "delay":0,
+                "duration":1,
+                "from":{"y":400},
+                "to":{"y":40},
+                "ease":{"type":"motion.easing.Cubic", "func":"easeOut"}
+            }
+        ],
+        "outTweens":[
+            {
+                "delay":0,
+                "duration":1,
+                "from":{"y":40},
+                "to":{"y":-255},
+                "ease":{"type":"motion.easing.Cubic", "func":"easeIn"}
+            }
+        ]
+    },
+    {
+        "name":"paused",
+        "composite":[
+            {"name":"base", "path":"Assets/images/modal_2.png", "x":0, "y":205},
+            {"name":"quit_game_btn", "path":"Assets/images/buttonBase.png", "x":0, "y":247},
+            {"name":"howto_pause_btn", "path":"Assets/images/buttonBase.png", "x":0, "y":289},
+            {"name":"pauseButtonText", "path":"Assets/images/paused.png", "x":7, "y":209},
+            {"name":"quitButtonText", "path":"Assets/images/quit.png", "x":42, "y":255},
+            {"name":"howtoButtonText", "path":"Assets/images/howto.png", "x":35, "y":297},
+            {"name":"balloons", "path":"Assets/images/balloons.png", "x":3, "y":0},
+            {"name":"close_pause_btn", "path":"Assets/images/close.png", "x":167, "y":194}
+        ],
+        "x":310,
+        "y":400,
+        "width": 186,
+        "height": 332,
+        "buttonGroups": [
+            {
+                "groupID":"",
+                "select":"",
+                "isMenu":false,
+                "buttons":[
+                    {"name":"quit_game_btn", "up":"", "over":"", "selected":""}
+                ]
+            },
+            {
+                "groupID":"",
+                "select":"",
+                "isMenu":false,
+                "buttons":[
+                    {"name":"howto_pause_btn", "up":"", "over":"", "selected":""}
+                ]
+            },
+            {
+                "groupID":"",
+                "select":"",
+                "isMenu":false,
+                "buttons":[
+                    {"name":"close_pause_btn","up":"", "over":"", "selected":""}
+                ]
+            }
+        ],
+        "inTweens":[
+            {
+                "delay":0,
+                "duration":1,
+                "from":{"y":400},
+                "to":{"y":-60},
+                "ease":{"type":"motion.easing.Cubic", "func":"easeOut"}
+            }
+        ],
+        "outTweens":[
+            {
+                "delay":0,
+                "duration":1,
+                "from":{"y":-60},
+                "to":{"y":-332},
+                "ease":{"type":"motion.easing.Cubic", "func":"easeIn"}
+            }
+        ]
+    },
+    {
+        "name":"score",
+        "composite":[
+            {"name":"scoreboard", "path":"Assets/images/scoreboard.png", "x":0, "y":0},
+            {"name":"pauseBase", "path":"Assets/images/iconbase.png", "x":135, "y":87},
+            {"name":"musicBase", "path":"Assets/images/iconbase.png", "x":124, "y":110},
+            {"name":"soundBase", "path":"Assets/images/iconbase.png", "x":149, "y":110},
+            {"name":"pause_btn", "path":"Assets/images/pause.png", "x":143, "y":96},
+            {"name":"music_btn", "path":"Assets/images/music.png", "x":131, "y":116},
+            {"name":"sound_btn", "path":"Assets/images/soundfx.png", "x":154, "y":114}
+        ],
+        "x":617,
+        "y":-138,
+        "width":183,
+        "height":138,
+        "buttonGroups": [
+            {
+                "groupID":"",
+                "select":"",
+                "isMenu":false,
+                "buttons":[
+                    {"name":"pause_btn", "up":"", "over":"", "selected":""}
+                ]
+            },
+            {
+                "groupID":"",
+                "select":"",
+                "isMenu":false,
+                "buttons":[
+                    {"name":"music_btn", "up":"", "over":"", "selected":""}
+                ]
+            },
+            {
+                "groupID":"",
+                "select":"",
+                "isMenu":false,
+                "buttons":[
+                    {"name":"sound_btn","up":"", "over":"", "selected":""}
+                ]
+            }
+        ],
+        "inTweens":[
+            {
+                "delay":0,
+                "duration":1,
+                "from":{"y":-138},
+                "to":{"y":-33},
+                "ease":{"type":"motion.easing.Cubic", "func":"easeOut"}
+            }
+        ],
+        "outTweens":[
+            {
+                "delay":0,
+                "duration":1,
+                "from":{"y":-33},
+                "to":{"y":-138},
+                "ease":{"type":"motion.easing.Cubic", "func":"easeIn"}
+            }
+        ]
+    }
+]
