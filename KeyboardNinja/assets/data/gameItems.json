@@ -1,0 +1,15 @@
+[
+    {"name":"lemon", "category":"NEUTRAL", "orientation":45},
+    {"name":"coconut", "category":"NEUTRAL", "orientation":60},
+    {"name":"banana", "category":"NEUTRAL", "orientation":0},
+    {"name":"pomegranate", "category":"NEUTRAL", "orientation":-120},
+    {"name":"kiwi", "category":"NEUTRAL", "orientation":144},
+    {"name":"redApple", "category":"NEUTRAL", "orientation":-30},
+    {"name":"greenApple", "category":"NEUTRAL", "orientation":-30},
+    {"name":"watermelon", "category":"NEUTRAL", "orientation":-5},
+    {"name":"orange", "category":"NEUTRAL", "orientation":128},
+    {"name":"ice", "category":"BUFF", "orientation":90},
+    {"name":"pineapple", "category":"BUFF", "orientation":90},
+    {"name":"cherry", "category":"BUFF", "orientation":0},
+    {"name":"bomb", "category":"NERF", "orientation":0}
+]
