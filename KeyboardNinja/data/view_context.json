@@ -14,6 +14,7 @@
                                 "duration":1.5,
                                 "from":{},
                                 "to":{"x":916, "y":0},
+                                "overwrite":true,
                                 "ease":{
                                     "type":"motion.easing.Cubic",
                                     "func":"easeInOut"
@@ -29,7 +30,6 @@
                         "type":"music",
                         "id":"intro",
                         "cacheSound":true,
-                        "cacheChannel":true,
                         "loops":0
                     }
                 }
@@ -48,6 +48,7 @@
                                 "duration":1.5,
                                 "from":{},
                                 "to":{"x":916, "y":0},
+                                "overwrite":true,
                                 "ease":{
                                     "type":"motion.easing.Cubic",
                                     "func":"easeInOut"
@@ -72,6 +73,7 @@
                                 "duration":1.5,
                                 "from":{},
                                 "to":{"x":0, "y":0},
+                                "overwrite":true,
                                 "ease":{
                                     "type":"motion.easing.Cubic",
                                     "func":"easeInOut"
@@ -96,6 +98,7 @@
                                 "duration":1.5,
                                 "from":{},
                                 "to":{"x":1832, "y":0},
+                                "overwrite":true,
                                 "ease":{
                                     "type":"motion.easing.Cubic",
                                     "func":"easeInOut"
@@ -115,8 +118,7 @@
                     "type":"ash.components.AudioSource",
                     "params":{
                         "type":"music",
-                        "id":"intro",
-                        "clearChannelCache":true
+                        "id":"intro"
                     }
                 },
                 {
@@ -129,6 +131,7 @@
                                 "duration":1.5,
                                 "from":{},
                                 "to":{"x":2748, "y":0},
+                                "overwrite":true,
                                 "ease":{
                                     "type":"motion.easing.Cubic",
                                     "func":"easeInOut"
@@ -140,8 +143,9 @@
                                 "component":"ash.components.AudioSource",
                                 "delay":0,
                                 "duration":1,
-                                "from":{"volume":1},
+                                "from":{"volume":1, "clearSoundCache":true, "stopOnNodeRemoval":true},
                                 "to":{"volume":0},
+                                "overwrite":true,
                                 "ease":{
                                     "type":"motion.easing.Cubic",
                                     "func":"easeOut"
@@ -153,6 +157,7 @@
                                 "duration":1,
                                 "from":{"rgb":1},
                                 "to":{"rgb":0},
+                                "overwrite":true,
                                 "ease":{
                                     "type":"motion.easing.Cubic",
                                     "func":"easeOut"
@@ -180,6 +185,7 @@
                                 "duration":0,
                                 "from":{"x":0, "y":400, "invalidate":true},
                                 "to":{},
+                                "overwrite":true,
                                 "ease":{
                                     "type":"motion.easing.Linear",
                                     "func":"easeNone"
@@ -187,10 +193,11 @@
                             },
                             {
                                 "component":"ash.components.ColorTransformWrapper",
-                                "delay":0.2,
+                                "delay":0,
                                 "duration":1,
-                                "from":{"rgb":0},
+                                "from":{},
                                 "to":{"rgb":1},
+                                "overwrite":true,
                                 "ease":{
                                     "type":"motion.easing.Cubic",
                                     "func":"easeOut"
@@ -210,8 +217,7 @@
                         "type":"music",
                         "id":"theme",
                         "loops":2147483647,
-                        "cacheSound":true,
-                        "cacheChannel":true
+                        "cacheSound":true
                     }
                 }
             ]
@@ -233,6 +239,7 @@
                                 "duration":1,
                                 "from":{"x":0, "y":800, "invalidate":true},
                                 "to":{"x":0, "y":400},
+                                "overwrite":true,
                                 "ease":{
                                     "type":"motion.easing.Cubic",
                                     "func":"easeOut"
@@ -245,6 +252,13 @@
                 {
                     "type":"funtotype.components.InGame",
                     "params":{}
+                },
+                {
+                    "type":"ash.components.AudioSource",
+                    "params":{
+                        "type":"music",
+                        "id":"theme"
+                    }
                 }
             ]
         },
@@ -267,6 +281,7 @@
                                 "duration":1.5,
                                 "from":{},
                                 "to":{"x":0, "y":800},
+                                "overwrite":true,
                                 "ease":{
                                     "type":"motion.easing.Cubic",
                                     "func":"easeInOut"
@@ -291,7 +306,7 @@
                         "type":"music",
                         "id":"theme",
                         "stopOnNodeRemoval":true,
-                        "clearChannelCache":true
+                        "clearSoundCache":true
                     }
                 },
                 {
@@ -304,6 +319,7 @@
                                 "duration":0,
                                 "from":{"nextState":"title", "invalidate":true},
                                 "to":{},
+                                "overwrite":true,
                                 "ease":{
                                     "type":"motion.easing.Linear",
                                     "func":"easeNone"
