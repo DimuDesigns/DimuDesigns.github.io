@@ -10,7 +10,22 @@
 	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	
-	
+	<script type="text/javascript">
+        window.addEventListener('touchstart', function() {
+            // create empty buffer
+            var context = new (window.AudioContext || window.webkitAudioContext)();
+            var buffer = context.createBuffer(1, 1, 22050);
+            var source = context.createBufferSource();
+            source.buffer = buffer;
+            
+            // connect to output
+            source.connect(context.destination);
+            
+            // play the file
+            source.noteOn(0);
+        }, false);
+        
+    </script>
 	<script type="text/javascript" src="./lib/soundjs.min.js"></script>
 	<script type="text/javascript" src="./PiratePig.js"></script>
 	
