@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="800"
+   height="600"
+   id="svg3069"
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="optimised.svg">
+  <metadata
+     id="metadata3089">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs3087" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1440"
+     inkscape:window-height="852"
+     id="namedview3085"
+     showgrid="true"
+     inkscape:zoom="1.0766667"
+     inkscape:cx="371.45469"
+     inkscape:cy="331.82576"
+     inkscape:window-x="0"
+     inkscape:window-y="22"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg3069">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4611"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true"
+       dotted="false" />
+  </sodipodi:namedview>
+  <path
+     d="M160 40C80 120 240 40 280 80"
+     style="fill:none;stroke:#000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+     id="path3071" />
+  <path
+     d="M280 80C320 120 120 280 240 320"
+     style="fill:none;stroke:#000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+     id="path3073" />
+  <path
+     d="M240 320C360 360 360 112 480 160"
+     style="fill:none;stroke:#000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+     id="path3075" />
+  <path
+     d="M480 160C560 192 520 296 640 320"
+     style="fill:none;stroke:#000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+     id="path3077" />
+  <path
+     d="M280 80C320 120 40 280 160 440"
+     style="fill:none;stroke:#000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+     id="path3079" />
+  <path
+     d="M240 320C360 360 280 512 400 560"
+     style="fill:none;stroke:#000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+     id="path3081" />
+  <path
+     d="M280 80C320 120 320 200 480 280"
+     style="fill:none;stroke:#000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+     id="path3083" />
+</svg>
