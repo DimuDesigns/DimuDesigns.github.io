@@ -2757,6 +2757,7 @@ var getMouseTarget = this.getMouseTarget = function(evt) {
             var len = selectedElements.length;
             for (var i = 0; i < len; ++i) {
               var selected = selectedElements[i];
+              if (selected.classList.contains("no-drag")) break;
               if (selected == null) break;
 //              if (i==0) {
 //                var box = svgedit.utilities.getBBox(selected);
