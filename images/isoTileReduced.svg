@@ -1,0 +1,15 @@
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.1" id="svg32582" viewBox="0 0 100 65" height="65" width="100">
+    <defs id="defs32584">
+        <clipPath id="clipPath37153" clipPathUnits="userSpaceOnUse">
+            <path id="path37155" d="M 0,25 50,0 100,25 100,40 50,65 0,40 Z" style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:6;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+        </clipPath>
+    </defs>
+    <g clip-path="url(#clipPath37153)" id="g37145">
+        <path id="path8139" d="M 180,0 50,65 -80,0 Z" style="display:inline;opacity:1;fill:#cd914d;fill-opacity:1;stroke:none;stroke-width:6;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+        <path style="display:inline;opacity:1;fill:#8bb54a;fill-opacity:1;stroke:none;stroke-width:6;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" d="M 180,-7 50,58 -80,-7 Z" id="path8141" />
+        <path id="path8143" d="M 6.5,28.25 50,6.5 87,25 43.5,46.75 43.5,54.75 6.5,36.25 Z" style="opacity:1;fill:#d9d3bf;fill-opacity:1;stroke:none;stroke-width:6;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+        <path id="path8145" d="M 13,39.5 13,31.5 50,13 74,25 37,43.5 37,51.5 Z" style="opacity:1;fill:#6a6a6a;fill-opacity:1;stroke:none;stroke-width:6;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+        <path id="path28002" style="opacity:0.2125;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" d="M 134,8 50,50 50,144 Z" />
+        <path d="M -34,8 50,50 50,144 Z" style="opacity:0.125;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" id="path28004" />
+    </g>
+</svg>
