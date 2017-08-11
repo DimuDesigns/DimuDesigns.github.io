@@ -1,13 +1,11 @@
 const CELL_WIDTH = 160,
-	  CELL_HEIGHT = 160,
-	  CELL_X_OFFSET = 80,
-	  CELL_Y_OFFSET = 80;
-	  
-	  
+      CELL_HEIGHT = 160,
+      CELL_X_OFFSET = 80,
+      CELL_Y_OFFSET = 80;
+	    
 document.addEventListener("DOMContentLoaded", event => {
-	let ttt = new TicTacToe();	
+    let ttt = new TicTacToe();	
 	ttt.init();
-	
 });
 
 /**
