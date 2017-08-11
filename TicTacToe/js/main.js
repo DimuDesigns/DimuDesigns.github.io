@@ -34,6 +34,7 @@ class TicTacToe {
             ["cell_0_0", "cell_1_1", "cell_2_2"],
             ["cell_0_2", "cell_1_1", "cell_2_0"]
         ];
+        
     }
     
     /**
@@ -44,15 +45,15 @@ class TicTacToe {
             resetButton = document.getElementById("reset-button"),
             newGameButton = document.getElementById("new-game-button");
         
-        this.initCellGroupIndexMap();
+        this.initCellMaps();
         
-        hitArea.addEventListener("click", e => this.updateGrid(e), false);
+        hitArea.addEventListener("click", e => this.handlePlayerMove(e), false);
         
         hitArea.addEventListener(
             "touchstart",
             e => {
                 e.preventDefault();
-                this.updateGrid(e.targetTouches[0]);
+                this.handlePlayerMove(e.targetTouches[0]);
             },
             false
         );
@@ -95,7 +96,7 @@ class TicTacToe {
      * A map used to optimize win condition calculations.
      *
      */
-    initCellGroupIndexMap() {
+    initCellMaps() {
         this.cellGroupIndexMap = {
             "cell_0_0":[0,3,6],
             "cell_1_0":[0,4],
@@ -107,22 +108,55 @@ class TicTacToe {
             "cell_1_2":[2,4],
             "cell_2_2":[2,5,6]
         };
+        
+        this.cellMap = [
+            {"id":"cell_0_0", "cellX":0, "cellY":0},
+            {"id":"cell_1_0", "cellX":1, "cellY":0},
+            {"id":"cell_2_0", "cellX":2, "cellY":0},
+            {"id":"cell_0_1", "cellX":0, "cellY":1},
+            {"id":"cell_1_1", "cellX":1, "cellY":1},
+            {"id":"cell_2_1", "cellX":2, "cellY":1},
+            {"id":"cell_0_2", "cellX":0, "cellY":2},
+            {"id":"cell_1_2", "cellX":1, "cellY":2},
+            {"id":"cell_2_2", "cellX":2, "cellY":2}
+        ];
     }
     
     /**
-     * Updates the game board in response to a click or touch event in the
-     * grid's designated hit-area; adds an X or O on even-numbered turns 
-     * and odd-numbered turns respectively.
-     *
+     * Handles player move spawned from a click or touch event in the
+     * grid's designated hit-area.
+     *  
      * @param {Event|Touch} e Either an Event or Touch instance depending on the event context (click or touch).
      */
-    updateGrid(e) {
+    handlePlayerMove(e) {
         let svgGeomElement = e.target,
             inverseMatrix = svgGeomElement.getScreenCTM().inverse(),
             cellX = Math.floor((inverseMatrix.a * e.clientX + inverseMatrix.e - CELL_X_OFFSET) / CELL_WIDTH),
-            cellY = Math.floor((inverseMatrix.d * e.clientY + inverseMatrix.f - CELL_Y_OFFSET) / CELL_HEIGHT),
-            cellId = `cell_${cellX}_${cellY}`,
-            blockContainer = document.getElementById("block-container");
+            cellY = Math.floor((inverseMatrix.d * e.clientY + inverseMatrix.f - CELL_Y_OFFSET) / CELL_HEIGHT);      
+        
+        if (this.updateGrid(cellX, cellY)) { // If grid update was successful
+        
+            // execute "computer" move
+            let cellIndex = Math.floor(this.cellMap.length * Math.random()); // randomly calculate the index of an unoccupied cell
+            
+            this.updateGrid(this.cellMap[cellIndex].cellX, this.cellMap[cellIndex].cellY);
+        }
+        
+    }
+    
+    /**
+     * Updates a given cell on the game board using the cell's x and y coordinates.
+     * The cell is updated with a X or O on even-numbered turns and odd-numbered turns respectively.
+     *
+     * @param {Number} cellX x-coordinate of the cell.
+     * @param (Number) cellY y-coordinate of the cell.
+     *
+     * @return {Boolean} return true if cell was successfully updated.
+     */
+    updateGrid(cellX, cellY) {
+        let cellId = `cell_${cellX}_${cellY}`,
+            blockContainer = document.getElementById("block-container"),
+            updated = false;
         
         if (!document.getElementById(cellId)) {
             let blockRef = (this.index++ % 2 === 0) ? "#x-block":"#o-block",
@@ -130,16 +164,20 @@ class TicTacToe {
                 y = CELL_Y_OFFSET + cellY * CELL_HEIGHT;
                 
             this.lookUp[cellId] = blockRef;
+            this.cellMap = this.cellMap.filter(item => item.id !== cellId);
             
-            blockContainer.innerHTML += `<use id="${cellId}" x="${x}" y="${y}" width="100%" height="100%" xlink:href="${blockRef}"/>`;  
+            blockContainer.innerHTML += `<use id="${cellId}" x="${x}" y="${y}" width="100%" height="100%" xlink:href="${blockRef}"/>`;
+
+            if (this.checkWinCondition(cellId) || blockContainer.childNodes.length === 9) {
+                let newGameButton = document.getElementById("new-game-button");
+                newGameButton.classList.add("show-new-game");
+            } else {
+                updated = true;
+            }
+            
         }
         
-        if (this.checkWinCondition(cellId) || blockContainer.childNodes.length == 9) {
-            let newGameButton = document.getElementById("new-game-button");
-            
-            newGameButton.classList.add("show-new-game");
-        }
-            
+        return updated;
     }
     
     /**
@@ -149,7 +187,7 @@ class TicTacToe {
         document.getElementById("block-container").innerHTML = null;
         this.index = 0;
         this.lookUp = {};
-        this.initCellGroupIndexMap();
+        this.initCellMaps();
     }
     
     /**
