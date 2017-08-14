@@ -149,7 +149,7 @@ class TicTacToe {
      * The cell is updated with a X or O on even-numbered turns and odd-numbered turns respectively.
      *
      * @param {Number} cellX x-coordinate of the cell.
-     * @param (Number) cellY y-coordinate of the cell.
+     * @param {Number} cellY y-coordinate of the cell.
      *
      * @return {Boolean} return true if cell was successfully updated.
      */
