@@ -194,6 +194,8 @@ class TicTacToe {
      * Check win condition for a specific cellId
      *
      * @param {String} cellId Id referencing a given cell.
+     *
+     * @return {Boolean} Returns true if 3 cells in a row/column/diagonal are all X's or O's
      */
     checkWinCondition(cellId) {
         let filtered,
